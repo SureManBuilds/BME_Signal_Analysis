@@ -1,6 +1,6 @@
 ## Signal Analysis Tool for Oscilloscope and Fluorescence Recordings.
 
-Provided tool installs as stand-alone program on the computer. It will require ~700Mb for MATLAB executable, and 4Mb for the program.
+Provided tool installs as stand-alone program. It will require ~700Mb for MATLAB executable, and 4Mb for the program.
 
 During installation process you can check box to create a shortcut on your desktop for easy access.
 

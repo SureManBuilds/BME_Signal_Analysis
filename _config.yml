@@ -3,3 +3,4 @@ show_downloads: true
 title: BME Signal Analysis Tool
 exclude: ['./README.md']
 exclude: ['./_config.yml']
+exclude: ['./index.md']

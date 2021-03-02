@@ -8,7 +8,7 @@
       <file>${PROJECT_ROOT}\BME_Signal_Analysis_App_1_resources\icon_24.png</file>
       <file>${PROJECT_ROOT}\BME_Signal_Analysis_App_1_resources\icon_16.png</file>
     </param.icons>
-    <param.version>1.0</param.version>
+    <param.version>1.2</param.version>
     <param.authnamewatermark>Vasilii Mansurov</param.authnamewatermark>
     <param.email>vasiliymansurov@gmail.com</param.email>
     <param.company>UNR</param.company>
@@ -23,7 +23,7 @@ Program will normalize the cell recordings and display all figures.
 
 &lt;b&gt; Export to Excel &lt;/b&gt;
 Select folder and name of the file you want to export selected oscilloscope and fluorescence traces.</param.description>
-    <param.screenshot />
+    <param.screenshot>C:\Users\NutButter\Desktop\Spash_Screen.jpg</param.screenshot>
     <param.guid />
     <param.installpath.string>\UNR\BME_Signal_Analysis\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -57,8 +57,6 @@ Select folder and name of the file you want to export selected oscilloscope and 
 	 -?  print help on how to use the application 
 	 input arguments</param.help.text>
     <unset>
-      <param.version />
-      <param.screenshot />
       <param.guid />
       <param.installpath.string />
       <param.installpath.combo />
@@ -91,10 +89,10 @@ Select folder and name of the file you want to export selected oscilloscope and 
     <fileset.resources />
     <fileset.package />
     <fileset.depfun>
-      <file>${PROJECT_ROOT}\Source code\Get_Pulse_Parameters_Extractor.m</file>
-      <file>${PROJECT_ROOT}\Source code\Investigate_Fluorescence.m</file>
-      <file>${PROJECT_ROOT}\Source code\Investigate_Scopes.m</file>
-      <file>${PROJECT_ROOT}\Source code\Select_Specific_Files.m</file>
+      <file>${PROJECT_ROOT}\Get_Pulse_Parameters_Extractor.m</file>
+      <file>${PROJECT_ROOT}\Investigate_Fluorescence.m</file>
+      <file>${PROJECT_ROOT}\Investigate_Scopes.m</file>
+      <file>${PROJECT_ROOT}\Select_Specific_Files.m</file>
     </fileset.depfun>
     <build-deliverables>
       <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="readme.txt" optional="true">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_testing\readme.txt</file>

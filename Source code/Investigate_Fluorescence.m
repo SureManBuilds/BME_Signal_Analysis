@@ -108,7 +108,7 @@ if Show_BG_Flag
  box on
 plot(All_Flur_Times(:,i),All_Flur_Pulses(:,i), 'LineWidth',1.2 )
 hold on
-plot(All_Flur_Times(:,i),Flur_Background_Multiple(:,i), 'LineWidth',1.2 )
+plot(All_Flur_Times(:,i),All_Flur_Backgrounds(:,i), 'LineWidth',1.2 )
 hold off
 
 xlim([x_Lower x_Upper])

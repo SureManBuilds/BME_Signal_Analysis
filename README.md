@@ -23,3 +23,5 @@ Alternatively search BME_Signal_Analysis in the windows app search.
 - If you do not have administrative rights to write to the selected file location, then the error sound will be made. Run the program as administrator.
 - If you select wrong files (Fluorescene files instead of Oscilloscope files, or with wrong format), then the error sound will be made. Read the "Input requirements" section.
 - If you have an excel file open, while trying to write to it, then the error sound will be made. Close the file and try again.
+
+### Send bugs to github's Issues page or directly to my email.

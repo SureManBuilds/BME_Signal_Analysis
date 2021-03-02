@@ -45,8 +45,8 @@ for i = 1:length(Selection_Content)
         Flur_Pulse(:,jk) = Flur_Pulse(:,jk) - Flur_Background;
         Normalizing_Factor = mean(Flur_Pulse(Peak_Low_Index-10:Peak_Low_Index,jk));
         Flur_Pulse(:,jk) = Flur_Pulse(:,jk) ./   Normalizing_Factor;     
-        [MainPeak MainPeakLoc] = max(Flur_Pulse(Peak_Low_Index:Peak_High_Index,jk));
-        MainPeakLoc = MainPeakLoc + Peak_Low_Index - 2;
+        [MainPeak MainPeakLoc] = max(diff(Flur_Pulse(Peak_Low_Index:Peak_High_Index,jk)));
+        MainPeakLoc = MainPeakLoc + Peak_Low_Index - 1;
         All_Flur_Params = [All_Flur_Params, MainPeak];
         All_Flur_Peak_Locs = [All_Flur_Peak_Locs, MainPeakLoc];
         All_Flur_Names = [All_Flur_Names, strcat(char(File_Names(i))," Cell: ",string(jk))];
@@ -126,7 +126,7 @@ for j = 1:width(All_Flur_Pulses_Norm)
 plot(All_Flur_Times(:,j),All_Flur_Pulses_Norm(:,j), 'LineWidth',1.2, 'color' , [0.8 0.8 0.8], 'HandleVisibility','off')
 end
 plot(Mean_All_Times,Mean_All_Pulses, 'LineWidth',1,'color','black')
-erro = errorbar(Mean_All_Times(1:F_Sampling_Rate:end),Mean_All_Pulses(1:F_Sampling_Rate:end),Std_All_Pulses(1:F_Sampling_Rate:end)/sqrt(length(All_Flur_Names)-1),'r', 'LineWidth', 1);
+erro = errorbar(Mean_All_Times(1:F_Sampling_Rate:end),Mean_All_Pulses(1:F_Sampling_Rate:end),Std_All_Pulses(1:F_Sampling_Rate:end)/sqrt(length(All_Flur_Names)),'r', 'LineWidth', 1);
 erro.LineStyle = 'none';
 hold off
 xlabel('Time, (s)','fontweight','bold','fontsize',12)
@@ -154,9 +154,9 @@ txt1 = sprintf('Ca2+ Peak: %.2f', All_Flur_Params(j));
 title('All Recordings');
 
 
-    Fluorescence_Sheet = [Mean_All_Times,All_Flur_Pulses_Norm];
+    Fluorescence_Sheet = [Mean_All_Times,All_Flur_Pulses_Norm, Mean_All_Pulses,Std_All_Pulses, Std_All_Pulses./sqrt(length(All_Flur_Names))];
     %parse names heere too
-     Fluorescence_Sheet = array2table(Fluorescence_Sheet, 'VariableNames', ["Time (s)",All_Flur_Names]); 
+     Fluorescence_Sheet = array2table(Fluorescence_Sheet, 'VariableNames', ["Time (s)",All_Flur_Names, "Mean", "STD", "SEM"]); 
 end
 
 

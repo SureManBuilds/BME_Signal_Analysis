@@ -78,7 +78,7 @@ for j = 1:width(All_Scope_Pulses)
 end
 
 plot(Mean_All_Times,Mean_All_Pulses, 'LineWidth',1,'color','black')
-erro = errorbar(Mean_All_Times(1:osc_sampling_rate:end),Mean_All_Pulses(1:osc_sampling_rate:end),Std_All_Pulses(1:osc_sampling_rate:end)/sqrt(length(File_Names)-1),'r', 'LineWidth', 1);
+erro = errorbar(Mean_All_Times(1:osc_sampling_rate:end),Mean_All_Pulses(1:osc_sampling_rate:end),Std_All_Pulses(1:osc_sampling_rate:end)/sqrt(length(File_Names)),'r', 'LineWidth', 1);
 erro.LineStyle = 'none';
 hold off
 xlabel('Time, (ns)','fontweight','bold','fontsize',12)
@@ -107,7 +107,9 @@ ylabel('Mean Amplitude, (kV)','fontweight','bold','fontsize',12)
 ylim([y_Lower y_Upper])
 xlim([x_Lower x_Upper])
 title('All Pulses');
-    Scope_Sheet = [Mean_All_Times,All_Scope_Pulses];
+
+     
+    Scope_Sheet = [Mean_All_Times,All_Scope_Pulses, Mean_All_Pulses,Std_All_Pulses, Std_All_Pulses./sqrt(length(File_Names))];
     %parse names heere too
-    Scope_Sheet = array2table(Scope_Sheet, 'VariableNames', ["Time (s)",Osc_Name_Array]);
+    Scope_Sheet = array2table(Scope_Sheet, 'VariableNames', ["Time (s)",Osc_Name_Array, "Mean", "STD", "SEM"]);
 end

@@ -2,7 +2,7 @@ function [Scope_Sheet Osc_Name_Array] = Investigate_Scopes(x_Lower, x_Upper, y_L
 
 [Selection_Content, File_Names] = Select_Specific_Files('.csv', "Oscilloscope");
 if isempty(Selection_Content)
-    Scope_Sheet = array2table(zeros(2), 'VariableNames', {'Time (s)','None Selected'});
+    Scope_Sheet = array2table(zeros(5), 'VariableNames', {'Time (s)','None Selected','Mean', 'STD', 'SEM'});
     Osc_Name_Array = {'None Selected'};
     return
 end

@@ -6,7 +6,7 @@ Time_Step_Threshold = 0.01; %Set as constant, to declutter menu. Change this to 
 Frames_Before_Peak = 10; %Same problem. Change this to average more points.
 [Selection_Content, File_Names] = Select_Specific_Files('.csv', "Fluorescence");
 if isempty(Selection_Content)
-    Fluorescence_Sheet = array2table(zeros(2), 'VariableNames', {'Time (s)','None Selected'});
+    Fluorescence_Sheet = array2table(zeros(5), 'VariableNames', {'Time (s)','None Selected','Mean', 'STD', 'SEM'});
     All_Flur_Names = {'None Selected'};
     return
 end

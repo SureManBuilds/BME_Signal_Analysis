@@ -1,3 +1,5 @@
 theme: jekyll-theme-dinky
 show_downloads: true
 title: BME Signal Analysis Tool
+exclude: ['./README.md']
+exclude: ['./_config.yml']

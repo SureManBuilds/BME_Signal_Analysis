@@ -1,4 +1,4 @@
-function [Fluorescence_Sheet, All_Flur_Names] = Investigate_Fluorescence(x_Lower, x_Upper, y_Lower, y_Upper, F_Sampling_Rate, F_Search_Low, F_Search_High, Show_Bounds_Flag, Show_BG_Flag)
+function [Fluorescence_Sheet, All_Flur_Names, All_Flur_Times,All_Flur_Pulses,All_Flur_Backgrounds] = Investigate_Fluorescence(x_Lower, x_Upper, y_Lower, y_Upper, F_Sampling_Rate, F_Search_Low, F_Search_High, Show_Bounds_Flag, Show_BG_Flag)
 
 Crop_To_Time = x_Upper;
 

@@ -1,4 +1,4 @@
-function [Scope_Sheet Osc_Name_Array] = Investigate_Scopes(x_Lower, x_Upper, y_Lower, y_Upper, show_positive, show_negative, show_delay, osc_sampling_rate)
+function [Scope_Sheet, Osc_Name_Array, All_Scope_Params, All_Raw_Scope_Times, All_Raw_Scope_Pulses] = Investigate_Scopes(x_Lower, x_Upper, y_Lower, y_Upper, show_positive, show_negative, show_delay, osc_sampling_rate)
 
 [Selection_Content, File_Names] = Select_Specific_Files('.csv', "Oscilloscope");
 if isempty(Selection_Content)
@@ -10,11 +10,15 @@ All_Scope_Times = [];
 All_Scope_Pulses = [];
 All_Scope_Params = [];
 [~, Selection_Scroll] = size(Selection_Content);
+All_Raw_Scope_Times = [];
+All_Raw_Scope_Pulses = [];
 for i = 1:Selection_Scroll
     File_Name_Oscilloscope = char(Selection_Content(:,i));
     Oscilloscope_Matrix = readmatrix(File_Name_Oscilloscope);   
     Oscilloscope_Time = Oscilloscope_Matrix(:,1);
     Oscilloscope_Pulse = Oscilloscope_Matrix(:,2);
+    All_Raw_Scope_Times = [All_Raw_Scope_Times, Oscilloscope_Time];
+    All_Raw_Scope_Pulses = [All_Raw_Scope_Pulses, Oscilloscope_Pulse];
     Oscilloscope_Pulse(Oscilloscope_Time<x_Lower) = [];
     Oscilloscope_Time(Oscilloscope_Time<x_Lower) = [];
     Oscilloscope_Pulse(Oscilloscope_Time>x_Upper) = [];
@@ -112,4 +116,5 @@ title('All Pulses');
     Scope_Sheet = [Mean_All_Times,All_Scope_Pulses, Mean_All_Pulses,Std_All_Pulses, Std_All_Pulses./sqrt(length(File_Names))];
     %parse names heere too
     Scope_Sheet = array2table(Scope_Sheet, 'VariableNames', ["Time (s)",Osc_Name_Array, "Mean", "STD", "SEM"]);
+
 end

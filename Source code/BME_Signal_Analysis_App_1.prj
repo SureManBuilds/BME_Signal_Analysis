@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3301621635" file="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1.prj" location="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning" name="BME_Signal_Analysis_App_1" preferred-package-location="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3301621635" file="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\BME_Signal_Analysis_App\Source code\BME_Signal_Analysis_App_1.prj" location="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\BME_Signal_Analysis_App\Source code" name="BME_Signal_Analysis_App_1" preferred-package-location="C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>BME_Signal_Analysis</param.appname>
     <param.icon>${PROJECT_ROOT}\BME_Signal_Analysis_App_1_resources\icon.ico</param.icon>
     <param.icons>
@@ -8,7 +8,7 @@
       <file>${PROJECT_ROOT}\BME_Signal_Analysis_App_1_resources\icon_24.png</file>
       <file>${PROJECT_ROOT}\BME_Signal_Analysis_App_1_resources\icon_16.png</file>
     </param.icons>
-    <param.version>1.2</param.version>
+    <param.version>1.3</param.version>
     <param.authnamewatermark>Vasilii Mansurov</param.authnamewatermark>
     <param.email>vasiliymansurov@gmail.com</param.email>
     <param.company>UNR</param.company>
@@ -22,8 +22,11 @@ Select .csv files containing Time in (s) at the first column, Background Fluores
 Program will normalize the cell recordings and display all figures.
 
 &lt;b&gt; Export to Excel &lt;/b&gt;
-Select folder and name of the file you want to export selected oscilloscope and fluorescence traces.</param.description>
-    <param.screenshot>C:\Users\NutButter\Desktop\Spash_Screen.jpg</param.screenshot>
+Select folder and name of the file you want to export selected oscilloscope and fluorescence traces.
+
+&lt;b&gt; Box Upload &lt;/b&gt;
+Automatically connects to box database and uploads raw files.</param.description>
+    <param.screenshot>${PROJECT_ROOT}\Spash_Screen.jpg</param.screenshot>
     <param.guid />
     <param.installpath.string>\UNR\BME_Signal_Analysis\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
@@ -55,7 +58,21 @@ Select folder and name of the file you want to export selected oscilloscope and 
 	 
  Input Arguments 
 	 -?  print help on how to use the application 
-	 input arguments</param.help.text>
+	 input arguments 
+ Description 
+ 	 &lt;b&gt; Oscilloscope analysis : &lt;/b&gt;
+Select .csv files containing Time in (ns) and Voltage Trace in (kV).
+The application will generate figures for each selected files with identified minimum and maximum amplitudes, and interphase interval.
+
+&lt;b&gt; Fluorescence analysis : &lt;/b&gt;
+Select .csv files containing Time in (s) at the first column, Background Fluorescence at the last column, and cell fluorescences in all other columns.
+Program will normalize the cell recordings and display all figures.
+
+&lt;b&gt; Export to Excel &lt;/b&gt;
+Select folder and name of the file you want to export selected oscilloscope and fluorescence traces.
+
+&lt;b&gt; Box Upload &lt;/b&gt;
+Automatically connects to box database and uploads raw files.</param.help.text>
     <unset>
       <param.guid />
       <param.installpath.string />
@@ -89,15 +106,16 @@ Select folder and name of the file you want to export selected oscilloscope and 
     <fileset.resources />
     <fileset.package />
     <fileset.depfun>
-      <file>${PROJECT_ROOT}\Get_Pulse_Parameters_Extractor.m</file>
       <file>${PROJECT_ROOT}\Investigate_Fluorescence.m</file>
       <file>${PROJECT_ROOT}\Investigate_Scopes.m</file>
       <file>${PROJECT_ROOT}\Select_Specific_Files.m</file>
+      <file>${PROJECT_ROOT}\write_folder_with_tables.m</file>
+      <file>C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Get_Pulse_Parameters_Extractor.m</file>
     </fileset.depfun>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="readme.txt" optional="true">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_testing\readme.txt</file>
-      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="splash.png" optional="false">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_testing\splash.png</file>
-      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="BME_Signal_Analysis.exe" optional="false">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\Data For MachineLearning\BME_Signal_Analysis_App_1\for_testing\BME_Signal_Analysis.exe</file>
+      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="BME_Signal_Analysis.exe" optional="false">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\BME_Signal_Analysis_App\Source code\BME_Signal_Analysis_App_1\for_testing\BME_Signal_Analysis.exe</file>
+      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="readme.txt" optional="true">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\BME_Signal_Analysis_App\Source code\BME_Signal_Analysis_App_1\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\BME_Signal_Analysis_App_1\for_testing" name="splash.png" optional="false">C:\Users\NutButter\Desktop\My Machine Learning Project 12 26 2020\My Machine Learning Project 10 20 2020\BME_Signal_Analysis_App\Source code\BME_Signal_Analysis_App_1\for_testing\splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>

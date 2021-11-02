@@ -1,9 +1,9 @@
-function [Fluorescence_Sheet, All_Flur_Names, All_Flur_Times,All_Flur_Pulses,All_Flur_Backgrounds] = Investigate_Fluorescence(x_Lower, x_Upper, y_Lower, y_Upper, F_Sampling_Rate, F_Search_Low, F_Search_High, Show_Bounds_Flag, Show_BG_Flag)
+function [Fluorescence_Sheet, All_Flur_Names, All_Flur_Times,All_Flur_Pulses,All_Flur_Backgrounds] = Investigate_Fluorescence(x_Lower, x_Upper, y_Lower, y_Upper, F_Sampling_Rate, F_Search_Low, F_Search_High, Show_Bounds_Flag, Show_BG_Flag, FrameNum)
 
 Crop_To_Time = x_Upper;
 
 Time_Step_Threshold = 0.01; %Set as constant, to declutter menu. Change this to change Threshold for time sampling differences between sheets.
-Frames_Before_Peak = 10; %Same problem. Change this to average more points.
+Frames_Before_Peak = uint8(FrameNum); %Same problem. Change this to average more points.
 [Selection_Content, File_Names] = Select_Specific_Files('.csv', "Fluorescence");
 if isempty(Selection_Content)
     Fluorescence_Sheet = array2table(zeros(5), 'VariableNames', {'Time (s)','None Selected','Mean', 'STD', 'SEM'});
@@ -24,6 +24,9 @@ for i = 1:length(Selection_Content)
     Flur_Matrix(Flur_Time > Crop_To_Time,:) = [];
     Flur_Time(Flur_Time > Crop_To_Time) = [];
     Flur_Pulse = Flur_Matrix(:,2:end-1);
+    if length(Flur_Pulse) == 0
+     error('Please check if your data has at least these three vectors: Time, ROI of cell 1, ROI of background.');
+    end
     Flur_Background = Flur_Matrix(:,end);   
     [row, col] = size(Flur_Pulse);
     All_Flur_Pulses = [All_Flur_Pulses, Flur_Pulse];
@@ -43,7 +46,7 @@ for i = 1:length(Selection_Content)
     end
     for jk = 1:col      
         Flur_Pulse(:,jk) = Flur_Pulse(:,jk) - Flur_Background;
-        Normalizing_Factor = mean(Flur_Pulse(Peak_Low_Index-10:Peak_Low_Index,jk));
+        Normalizing_Factor = mean(Flur_Pulse(Peak_Low_Index-Frames_Before_Peak:Peak_Low_Index,jk));
         Flur_Pulse(:,jk) = Flur_Pulse(:,jk) ./   Normalizing_Factor;     
         [MainPeak MainPeakLoc] = max(diff(Flur_Pulse(Peak_Low_Index:Peak_High_Index,jk)));
         MainPeakLoc = MainPeakLoc + Peak_Low_Index - 1;
